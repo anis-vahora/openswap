@@ -3,13 +3,14 @@ import { AppBar, Toolbar, Typography, Button, Container } from "@mui/material";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
 import Web3 from "web3";
+import "./Navbar.css";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#1B1246",
+    backgroundColor: "#111621",
     padding: "0 20px",
     margin: 0,
     width: "100%",
@@ -34,9 +35,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-end",
-  },
-  address: {
-    marginRight: "10px",
+    paddingRight: "10px",
   },
 }));
 
@@ -79,7 +78,8 @@ const Navbar = () => {
             >
               OpenSwap
             </Typography>
-            {connectedAccount ?  <div className={classes.accountInfo}>
+            {connectedAccount ? (
+              <div className={classes.accountInfo}>
                 <Typography
                   variant="body1"
                   color="inherit"
@@ -90,13 +90,16 @@ const Navbar = () => {
                 <Typography variant="body1" color="inherit">
                   Balance: {accountBalance} ETH
                 </Typography>
-              </div> : <Button
-              color="inherit"
-              className={classes.connectButton}
-              onClick={handleConnectWallet}
-            >
-              Connect Wallet
-            </Button>}
+              </div>
+            ) : (
+              <Button
+                color="inherit"
+                className={classes.connectButton}
+                onClick={handleConnectWallet}
+              >
+                Connect Wallet
+              </Button>
+            )}
           </Toolbar>
         </Container>
       </AppBar>
