@@ -79,15 +79,7 @@ const Navbar = () => {
             >
               OpenSwap
             </Typography>
-            <Button
-              color="inherit"
-              className={classes.connectButton}
-              onClick={handleConnectWallet}
-            >
-              Connect Wallet
-            </Button>
-            {connectedAccount && (
-              <div className={classes.accountInfo}>
+            {connectedAccount ?  <div className={classes.accountInfo}>
                 <Typography
                   variant="body1"
                   color="inherit"
@@ -98,8 +90,13 @@ const Navbar = () => {
                 <Typography variant="body1" color="inherit">
                   Balance: {accountBalance} ETH
                 </Typography>
-              </div>
-            )}
+              </div> : <Button
+              color="inherit"
+              className={classes.connectButton}
+              onClick={handleConnectWallet}
+            >
+              Connect Wallet
+            </Button>}
           </Toolbar>
         </Container>
       </AppBar>
